@@ -1,3 +1,5 @@
+import {pool} from '../dbConn.js'
+
 export const userRegister = async (req, res) => {
     const { n_control, nombre, telefono, email, tipo_usuario, username, pass } = req.body
     try {
