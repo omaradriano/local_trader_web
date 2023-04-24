@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,53 @@
     <link type="text/css" rel="stylesheet" href="/bootstrap.css">
     <title>Local Trader</title>
 </head>
+
 <body>
-    <p>Feed cargado</p>
-    <form action="/signin" method="post">
+    
+    <!-- <p>Feed cargado</p> -->
+    <div class="container bg-red d-flex flex-column p-5">
+        <h1 class="align-self-center">Registro de usuario</h1>
+        <form action="/signin" method="post" class="d-flex flex-column">
+            <div class="mb-3">
+                <label for="n_control" class="form-label">Numero de control</label>
+                <input type="text" name="n_control" class="form-control" id="n_control" placeholder="Ej: 20497865">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo</label>
+                <input type="text" name="email" class="form-control" id="email" placeholder="usuario@gmail.com">
+            </div>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre(s)</label>
+                <input type="text" name="nombre" class="form-control" id="nombre" placeholder="Nombre(s)">
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Telefono</label>
+                <input type="text" name="telefono" class="form-control" id="telefono" placeholder="614XXXXXXX">
+            </div>
+            <div class="mb-3">
+                <label for="tipo_usuario" class="form-label">Tipo de usuario</label>
+                <select class="form-select" name="tipo_usuario" aria-label="Default select example">
+                    <option selected>Estudiante</option>
+                    <option value="1">Vendedor</option>
+                    <!-- <option value="3">Three</option> -->
+                  </select>
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <label for="pass" class="form-label">Contrasena</label>
+                <input type="password" name="pass" class="form-control" id="pass" placeholder="Contrasena">
+            </div>
+            <button type="submit" class="btn btn-primary btn-sm align-self-center">Registro</button>
+        </form>
+        <!-- <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Contrasena</label>
+            <input type="password" class="form-control" id="pass_confirmation" placeholder="Repetir contrasena">
+        </div> -->
+    </div>
+    <!-- <form action="/signin" method="post">
         <input type="text" name="n_control" placeholder="Número de control">
         <input type="text" name="nombre" placeholder="Nombre">
         <input type="text" name="telefono" placeholder="Telefono">
@@ -18,6 +63,7 @@
         <input type="text" name="username" placeholder="Username">
         <input type="text" name="pass" placeholder="Password">
         <button type="submit">Subir datos</button>
-    </form>
+    </form> -->
 </body>
+
 </html>
