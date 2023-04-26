@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+.navbar--config {
+    position: relative;
+}
+
+.btn--position {
+    position: absolute;
+    bottom: -50px;
+    right: 10px;
+}
+

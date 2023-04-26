@@ -1,25 +1,19 @@
-import { pool } from '../dbConn.js'
-//Archivos estáticos
 const staticRoute = { root: 'src/public' }
-const bootstrapRoute = { root: 'src/bootstrap' }
 
-export const userRegister = async (req, res) => {
-    const { n_control, nombre, telefono, email, tipo_usuario, username, pass } = req.body
-    try {
-        const data = await pool.query('insert into local_trader.usuario (n_control, nombre, telefono, email, tipo_usuario, username, pass) values (?,?,?,?,?,?,?)', [n_control, nombre, telefono, email, tipo_usuario, username, pass])
-        res.sendFile('signinSuccess.html', staticRoute)
-    } catch (error) {
-        // res.status(500).json({
-        //     message: "No se ha podido completar la operación"
-        // })
-        res.status(500).sendFile('signinFailed.html', staticRoute)
-    }
-}
+import {pool} from '../dbConn.js'
 
 export const loadFeed = async (req, res) => {
-    res.sendFile('feed.html', staticRoute)
-}
-
-export const loadSigninForm = (req, res) => {
-    res.sendFile('signinForm.html', staticRoute)
+    // res.sendFile('feed.html', staticRoute)
+    // try {
+    //     const [data] = await pool.query('select * from local_trader.usuario')
+    //     // res.sendFile('feed.html', staticRoute)
+    // } catch (error) {
+    //     res.status(500).json({
+    //         message: 'Ha ocurrido un error inesperado'
+    //     })
+    // }
+    // const [data] = await pool.query('select * from local_trader.usuario')
+    // res.render('feed', {usuarios: data})
+    const [data] = await pool.query('select * from local_trader.usuario')
+    res.send(data)
 }

@@ -11,7 +11,17 @@
 
 <body>
 
-    <!-- <p>Feed cargado</p> -->
+    <nav class="navbar bg-body-tertiary navbar--config">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-4">Local Trader</a>
+            <form class="d-flex flex-row align-content-center justify-content-center" role="search">
+                <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+                <button class="btn btn-outline-success ms-2" type="submit"><a href="/login">Iniciar sesión</a></button>
+                <button class="btn btn-outline-danger ms-2" type="submit"><a href="/">Inicio</a></button>
+                <!-- <button class="btn btn-outline-success ms-2" type="submit"><a href="#">Iniciar sesión</a></button> -->
+            </form>
+        </div>
+    </nav>
     <div class="container bg-red d-flex flex-column p-5">
         <h1 class="align-self-center">Registro de usuario</h1>
         <form action="/signin" method="post" class="d-flex flex-column">

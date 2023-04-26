@@ -1,6 +1,8 @@
 import express from 'express'
 //Routes
 import feedRoutes from './routes/feed.routes.js'
+import signinRoutes from './routes/signin.routes.js'
+import loginRoutes from './routes/login.routes.js'
 //Instancia App
 const app = express()
 
@@ -11,6 +13,8 @@ app.use(express.static('public'))
 app.use(express.static('bootstrap'))
 
 //Feed routes
+app.use(signinRoutes)
 app.use(feedRoutes)
+app.use(loginRoutes)
 
 export default app
