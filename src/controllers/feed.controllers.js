@@ -15,5 +15,7 @@ export const loadFeed = async (req, res) => {
     // const [data] = await pool.query('select * from local_trader.usuario')
     // res.render('feed', {usuarios: data})
     const [data] = await pool.query('select * from local_trader.usuario')
-    res.send(data)
+    // res.send(data)
+    res.render('feed', {data})
+
 }

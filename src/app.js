@@ -12,6 +12,11 @@ app.use(express.json())
 app.use(express.static('public'))
 app.use(express.static('bootstrap'))
 
+//Motor de plantillas
+app.set('views', 'src/public')
+app.set('view engine', 'ejs')
+
+
 //Feed routes
 app.use(signinRoutes)
 app.use(feedRoutes)
