@@ -15,3 +15,13 @@
     z-index: 10;
 }
 
+.submit_btn--pos {
+    bottom: 16px;
+    right: calc(50% - 50px);
+}
+
+.btn_delete_post--pos {
+    right: 10px;
+    top: calc(50% - 15px);
+}
+

@@ -6,7 +6,7 @@ const bootstrapRoute = { root: 'src/bootstrap' }
 const stylesRoute = { root: 'src/styles' }
 
 //Controllers
-import { loadFeed } from '../controllers/feed.controllers.js'
+import { loadFeed, addPost, deletePost } from '../controllers/feed.controllers.js'
 
 router.get('/', loadFeed)
     .get('/bootstrap.css', (req, res) => {
@@ -16,5 +16,9 @@ router.get('/', loadFeed)
     }).get('/feed.css', (req, res)=> {
         res.sendFile('feed.css', stylesRoute)
     })
+
+router.post('/', addPost)
+
+router.get('/delete/:id_venta', deletePost)
 
 export default router

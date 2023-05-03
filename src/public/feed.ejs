@@ -14,43 +14,71 @@
 
 <body>
   <!-- Navbar -->
-  <nav class="navbar bg-body-tertiary navbar--config position-relative z-0">
+  <nav class="navbar bg-body-tertiary navbar--config">
     <div class="container-fluid">
       <a class="navbar-brand ms-4">Local Trader</a>
       <form class="d-flex flex-row align-content-center justify-content-center" role="search">
+        <button type="button" class="btn btn-primary btn--position" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+          Agregar producto
+        </button>
         <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
         <button class="btn btn-outline-danger" type="submit"><a href="/signin">Registro</a></button>
         <button class="btn btn-outline-success ms-2" type="submit"><a href="/login">Iniciar sesión</a></button>
       </form>
     </div>
-    <button type="button" class="btn btn-primary btn--position" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Launch demo modal
-    </button>
   </nav>
   <!-- Renderizado de datos -->
-  <div class="container-sm position-relative z-0 my-4">
-    <!-- <% data.forEach( elem=> { %>
-      <div class="card mb-2">
-        <div class="card-body">
-          <%= elem.nombre %>
+  <div class="container-sm position-relative z-0 my-4 d-flex flex-column align-content-center">
+    <% data.reverse().forEach( elem=> { %>
+      <div class="card align-self-center my-2" style="width: 90%; max-width: 30rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body position-relative">
+          <h5 class="card-title"><%= elem.titulo %></h5>
+          <p class="card-text"> <%= elem.descripcion  %></p>
+          <p class="card-text">$ <%= elem.precio %></p>
+          <a  href="/delete/<%= elem.id_venta %>" class="btn btn-danger position-absolute btn_delete_post--pos">Eliminar</a>
         </div>
       </div>
-      <% }) %> -->
+      <% }) %>
   </div>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content position-relative">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva publicación</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <form action="#" method="post">
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" name="titulo" id="titulo" placeholder="#" required>
+              <label for="titulo" class="form-label">Titulo del producto</label>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" name="n_control_cliente" id="n_control_cliente" placeholder="#"
+                required>
+              <label for="n_control" class="form-label">Número de control</label>
+            </div>
+            <div class="mb-3 form-floating">
+              <input type="text" class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="#">
+              <label for="descripcion" class="form-label">Descripción</label>
+            </div>
+            <!-- <div class="mb-3 form-floating">
+              <input type="text" class="form-control" name="cantidad" id="cantidad" placeholder="#">
+              <label for="precio" class="form-label">Cantidad</label>
+            </div> -->
+            <div class="input-group mb-3">
+              <span class="input-group-text">$</span>
+              <input type="text" class="form-control" name="precio" aria-label="Amount (to the nearest dollar)">
+              <!-- <span class="input-group-text">.00</span> -->
+            </div>
         </div>
+        <button type="submit" class="btn btn-primary position-absolute submit_btn--pos">Agregar</button>
+        </form>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>
