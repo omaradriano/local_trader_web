@@ -27,21 +27,21 @@
     </nav>
 
     <div class="container-sm d-flex flex-column align-content-center">
-        <form action="#" method="post" class="align-self-center mt-4 bg-body-tertiary p-5 border border-secondary border-start-0 border-top-0" style="width: 60%; max-width: 400px;">
+        <form action="/login" method="post" class="align-self-center mt-4 bg-body-tertiary p-5 border border-secondary border-start-0 border-top-0" style="width: 60%; max-width: 400px;">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Username</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text">Tu usuario es único</div>
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="n_control_cliente" class="form-control" id="username" aria-describedby="username" required>
+                <div id="username" class="form-text">Tu usuario es único</div>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
+                <label for="pass" class="form-label">Password</label>
+                <input type="password" name="pass" class="form-control" id="pass" required>
             </div>
             <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                 <label class="form-check-label" for="exampleCheck1">Recordar</label>
             </div>
-            <!-- <button type="submit" class="btn btn-primary">Iniciar sesión</button> -->
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
         </form>
     </div>
 

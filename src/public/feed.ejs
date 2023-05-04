@@ -16,15 +16,23 @@
   <!-- Navbar -->
   <nav class="navbar bg-body-tertiary navbar--config">
     <div class="container-fluid">
-      <a class="navbar-brand ms-4">Local Trader</a>
+      <a class="navbar-brand ms-4"> Local Trader </a>
       <form class="d-flex flex-row align-content-center justify-content-center" role="search">
-        <button type="button" class="btn btn-primary btn--position" data-bs-toggle="modal"
-          data-bs-target="#exampleModal">
-          Agregar producto
-        </button>
+        <% if(userData){ %>
+          <button type="button" class="btn btn-primary btn--position" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">
+            Agregar producto
+          </button>
+        <% } %>
         <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <button class="btn btn-outline-danger" type="submit"><a href="/signin">Registro</a></button>
-        <button class="btn btn-outline-success ms-2" type="submit"><a href="/login">Iniciar sesión</a></button>
+        <!-- <button class="btn btn-outline-danger" type="submit"><a href="/signin">Registro</a></button> -->
+        <% if(userData){ %>
+          <button class="btn btn-outline-success ms-2" type="submit"><a href="/logout">Log out</a></button>
+        <% }else { %>
+          <button class="btn btn-outline-success ms-2" type="submit"><a href="/login">Log in</a></button>
+          <button class="btn btn-outline-danger ms-2" type="submit"><a href="/signin">Registro</a></button>
+        <% } %>
+
       </form>
     </div>
   </nav>
@@ -37,7 +45,9 @@
           <h5 class="card-title"><%= elem.titulo %></h5>
           <p class="card-text"> <%= elem.descripcion  %></p>
           <p class="card-text">$ <%= elem.precio %></p>
-          <a  href="/delete/<%= elem.id_venta %>" class="btn btn-danger position-absolute btn_delete_post--pos">Eliminar</a>
+          <% if(userData){ %>
+            <a  href="/delete/<%= elem.id_venta %>" class="btn btn-danger position-absolute btn_delete_post--pos">Eliminar</a>
+          <% } %>
         </div>
       </div>
       <% }) %>
@@ -56,11 +66,11 @@
               <input type="text" class="form-control" name="titulo" id="titulo" placeholder="#" required>
               <label for="titulo" class="form-label">Titulo del producto</label>
             </div>
-            <div class="mb-3 form-floating">
+            <!-- <div class="mb-3 form-floating">
               <input type="text" class="form-control" name="n_control_cliente" id="n_control_cliente" placeholder="#"
                 required>
               <label for="n_control" class="form-label">Número de control</label>
-            </div>
+            </div> -->
             <div class="mb-3 form-floating">
               <input type="text" class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="#">
               <label for="descripcion" class="form-label">Descripción</label>

@@ -2,34 +2,49 @@ const staticRoute = { root: 'src/public' }
 
 import { pool } from '../dbConn.js'
 //generador de Id de post
-import {uuid} from 'uuidv4'
+import { uuid } from 'uuidv4'
 
 export const loadFeed = async (req, res) => {
-    // res.sendFile('feed.html', staticRoute)
-    // try {
-    //     const [data] = await pool.query('select * from local_trader.usuario')
-    //     // res.sendFile('feed.html', staticRoute)
-    // } catch (error) {
-    //     res.status(500).json({
-    //         message: 'Ha ocurrido un error inesperado'
-    //     })
+    // if (!req.session.userData) {
+    //     console.log('No existe usuario');
+    //     const [data] = await pool.query('select * from local_trader.post')
+    //     // res.send(data)
+    //     res.render('feed', { data })
+    // } else {
+    //     // const nControl = req.session.userData.n_control_cliente
+    //     const [data] = await pool.query('select * from local_trader.post where n_control_cliente = (?)', [req.session.userData.n_control_cliente])
+    //     res.render('feed', { data })
     // }
-    // const [data] = await pool.query('select * from local_trader.usuario')
-    // res.render('feed', {usuarios: data})
-    const [data] = await pool.query('select * from local_trader.post')
-    // res.send(data)
-    res.render('feed', { data })
-
+    try {
+        if (!req.session.userData) {
+            const userData = undefined
+            const [data] = await pool.query('select * from local_trader.post')
+            res.render('feed', { data, userData })
+        }else{
+            const [data] = await pool.query('select * from local_trader.post')
+            const userData = req.session.userData
+            res.render('feed', { data, userData })
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: 'Ha ocurrido un error inesperado'
+        })
+    }
 }
 
 export const addPost = async (req, res) => {
-    const { n_control_cliente, titulo, descripcion, precio } = req.body
+    const { titulo, descripcion, precio } = req.body
     const generatedID = await uuid()
+    
     try {
+        if(req.session.userData){
+            const nControl = req.session.userData.n_control_cliente
+            const data = await pool.query('call addPost (?,?,?,?,?)', [titulo, generatedID, nControl, descripcion, precio])
+            console.log('Articulo agregado');
+            res.redirect(303, '/')
+        }
         // const data = await pool.query('insert into local_trader.post (titulo, id_venta, n_control_cliente, descripcion, precio) values (?,?,?,?,?)', [titulo, generatedID, n_control_cliente, descripcion, precio])
-        const data = await pool.query('call addPost (?,?,?,?,?)', [titulo, generatedID, n_control_cliente, descripcion, precio])
-        console.log('Articulo agregado');
-        res.redirect(303, '/')
+
     } catch (error) {
         // res.status(500).json({
         //     message: "No se ha podido completar la operación"
