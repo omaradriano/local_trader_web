@@ -9,11 +9,7 @@ const stylesRoute = { root: 'src/styles' }
 import { loadFeed, addPost, deletePost } from '../controllers/feed.controllers.js'
 
 router.get('/', loadFeed)
-    .get('/bootstrap.css', (req, res) => {
-        res.sendFile('bootstrap.css', bootstrapRoute)
-    }).get('/bootstrap.bundle.js', (req, res) => {
-        res.sendFile('bootstrap.bundle.js', bootstrapRoute)
-    }).get('/feed.css', (req, res)=> {
+    .get('/feed.css', (req, res) => {
         res.sendFile('feed.css', stylesRoute)
     })
 

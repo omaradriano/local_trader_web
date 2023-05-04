@@ -6,6 +6,7 @@ import flash from 'connect-flash'
 import feedRoutes from './routes/feed.routes.js'
 import signinRoutes from './routes/signin.routes.js'
 import loginRoutes from './routes/login.routes.js'
+import profileRoutes from './routes/profile.routes.js'
 //Instancia App
 const app = express()
 
@@ -36,5 +37,7 @@ app.use(feedRoutes)
 app.use(signinRoutes)
 //Login routes
 app.use(loginRoutes)
+//Profile
+app.use(profileRoutes)
 
 export default app

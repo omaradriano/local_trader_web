@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link type="text/css" rel="stylesheet" href="bootstrap.css">
+    <!-- Custom CSS -->
+    <% if(userData){ %>
+        <title>Local Trader | <%= userData[0][0].username %></title>
+    <% } %>
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary navbar--config">
+        <div class="container-fluid">
+            <% if(userData){ %>
+                <a class="navbar-brand ms-4"> <%= userData[0][0].username %> </a>
+            <% } %>
+          <form class="d-flex flex-row align-content-center justify-content-center" role="search">
+            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+            <!-- <button class="btn btn-outline-danger" type="submit"><a href="/signin">Registro</a></button> -->
+            <button class="btn btn-outline-success ms-2"><a href="/">Inicio</a></button>
+            <% if(userData){ %>
+              <button class="btn btn-outline-danger ms-2"><a href="/logout">Log out</a></button>
+            <% } %>
+                
+          </form>
+        </div>
+      </nav>
+    <script src="./bootstrap.bundle.js"></script>
+</body>
+</html>
