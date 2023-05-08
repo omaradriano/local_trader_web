@@ -25,12 +25,12 @@
           </button>
         <% } %>
         <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-        <!-- <button class="btn btn-outline-danger" type="submit"><a href="/signin">Registro</a></button> -->
+        <!-- <button class="btn btn-outline-danger" type="submit"><a href="/signup">Registro</a></button> -->
         <% if(userData){ %>
           <button class="btn btn-outline-success ms-2"><a href="/profile">Perfil</a></button>
           <button class="btn btn-outline-success ms-2"><a href="/logout">Log out</a></button>
         <% }else { %>
-          <button class="btn btn-outline-danger ms-2"><a href="/signin">Registro</a></button>
+          <button class="btn btn-outline-danger ms-2"><a href="/signup">Registro</a></button>
           <button class="btn btn-outline-success ms-2"><a href="/login">Log in</a></button>
         <% } %>
 
@@ -96,7 +96,7 @@
       </div>
     </div>
   </div>
-  <script src="./bootstrap.bundle.js"></script>
+  <script src="bootstrap.bundle.js"></script>
   <!-- <script src="../controllers/feed.controllers.js"></script> -->
 </body>
 

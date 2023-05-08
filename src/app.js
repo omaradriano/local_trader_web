@@ -4,7 +4,7 @@ import flash from 'connect-flash'
 
 //Routes
 import feedRoutes from './routes/feed.routes.js'
-import signinRoutes from './routes/signin.routes.js'
+import signupRoutes from './routes/signup.routes.js'
 import loginRoutes from './routes/login.routes.js'
 import profileRoutes from './routes/profile.routes.js'
 //Instancia App
@@ -34,7 +34,7 @@ app.set('view engine', 'ejs')
 //Feed routes
 app.use(feedRoutes)
 //Signup routes
-app.use(signinRoutes)
+app.use(signupRoutes)
 //Login routes
 app.use(loginRoutes)
 //Profile

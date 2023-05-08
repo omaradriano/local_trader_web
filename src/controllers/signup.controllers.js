@@ -19,6 +19,6 @@ export const userRegister = async (req, res) => {
         res.render('signinSuccess')
 }
 
-export const loadSigninForm = (req, res) => {
-    res.render('signinForm')
+export const loadSignUpForm = (req, res) => {
+    res.render('signupForm')
 }
