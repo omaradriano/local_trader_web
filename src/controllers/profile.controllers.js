@@ -25,19 +25,19 @@ export const loadComments = async (req, res) => {
     
 }
 
-export const loadPosts = async (req, res) => {
-    let userData = null
-    let userPosts = null
-    if(req.session.userData){
-        // const userData = req.session.userData
-        const nControl = req.session.userData.n_control_cliente
-        userData = await pool.query('select * from local_trader.usuario where n_control = (?)', [nControl])
-        userPosts = await pool.query('select * from local_trader.post where n_control_cliente = (?)', [nControl])
-        // console.log(req.session.userData);
-        // console.log(userData[0]);
-    }
-    // else{
-    //     res.send('No existe perfil')
-    // }
-    res.render('profilePosts', {userData, userPosts})
-}
+// export const loadPosts = async (req, res) => {
+//     let userData = null
+//     let userPosts = null
+//     if(req.session.userData){
+//         // const userData = req.session.userData
+//         const nControl = req.session.userData.n_control_cliente
+//         userData = await pool.query('select * from local_trader.usuario where n_control = (?)', [nControl])
+//         userPosts = await pool.query('select * from local_trader.post where n_control_cliente = (?)', [nControl])
+//         // console.log(req.session.userData);
+//         // console.log(userData[0]);
+//     }
+//     // else{
+//     //     res.send('No existe perfil')
+//     // }
+//     res.render('profilePosts', {userData, userPosts})
+// }

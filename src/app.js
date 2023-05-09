@@ -25,7 +25,7 @@ app.use(session({
         maxAge: 60000,
     }
 }))
-app.use(flash())
+// app.use(flash())
 
 //Archivos estáticos
 // app.use(express.static('public'))
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'bootstrap')))
 app.use(express.static(path.join(__dirname, 'scripts')))
 app.use(express.static(path.join(__dirname, 'testImages')))
 app.use(express.static(path.join(__dirname, 'styles')))
-app.use(express.static(path.join(__dirname,`${/[0-9]{8}/g}/bootstrap`)))
+// app.use(`/${/[0-9]{8}/g}/posts`,express.static(path.join(__dirname,`bootstrap`)))
 
 //Motor de plantillas
 app.set('views', 'src/public')

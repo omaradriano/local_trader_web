@@ -8,10 +8,5 @@ import { loadSignUpForm, userRegister } from '../controllers/signup.controllers.
 const router = Router()
 
 router.get('/signup', loadSignUpForm)
-    .get('/bootstrap.css', (req, res) => {
-        res.sendFile('bootstrap.css', bootstrapRoute)
-    }).get('/bootstrap.bundle.js', (req, res) => {
-        res.sendFile('bootstrap.bundle.js', bootstrapRoute)
-    })
 router.post('/signup', userRegister)
 export default router

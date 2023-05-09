@@ -38,31 +38,18 @@
       <div class="card-header">
         <ul class="nav nav-pills card-header-pills">
           <li class="nav-item">
-            <a class="nav-link active" href="#" id="nav_1">Informacion personal</a>
+            <a class="nav-link" href="#" id="nav_1">Informacion personal</a>
           </li>
           <li class="nav-item">
-            <% if(userData){ %>
-              <a class="nav-link" href="/<%=userData[0][0].n_control%>/posts" id="nav_2">Productos</a>
-            <% }else{ %>
-              <a class="nav-link" href="/default/posts" id="nav_2">Productos</a>
-            <%} %>
+            <a class="nav-link" href="#" id="nav_2">Productos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" id="nav_3">Comentarios</a>
+            <a class="nav-link active" href="#" id="nav_3">Comentarios</a>
           </li>
         </ul>
       </div>
       <div class="card-body" id="profileCardBody">
-        <img src="/img2.jpg" class="img-thumbnail card-body--config" alt="Imagen de prueba">
-        <% if(userData){ %>
-          <p class="card-text">
-        <%= userData[0][0].username %>
-          </p>
-        <% }else{ %>
-          <p>No hay un perfil cargado</p>
-        <% } %>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+        <p>Comments</p>
       </div>
     </div>
   </div>
