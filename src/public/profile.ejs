@@ -1,33 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="bootstrap.css">
-    <!-- Custom CSS -->
-    <% if(userData){ %>
-        <title>Local Trader | <%= userData[0][0].username %></title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link type="text/css" rel="stylesheet" href="bootstrap.css">
+  <!-- Custom CSS -->
+  <link type="text/css" rel="stylesheet" href="profile.css">
+  <% if(userData){ %>
+    <title>Local Trader | <%= userData[0][0].username %>
+    </title>
     <% } %>
 </head>
+
 <body>
-    <nav class="navbar bg-body-tertiary navbar--config">
-        <div class="container-fluid">
+  <nav class="navbar bg-body-tertiary navbar--config">
+    <div class="container-fluid">
+      <% if(userData){ %>
+        <a class="navbar-brand ms-4">
+          <%= userData[0][0].username %>
+        </a>
+      <% } %>
+        <form class="d-flex flex-row align-content-center justify-content-center" role="search">
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+          <!-- <button class="btn btn-outline-danger" type="submit"><a href="/signup">Registro</a></button> -->
+          <button class="btn btn-outline-success ms-2"><a href="/">Inicio</a></button>
+          <% if(userData){ %>
+            <button class="btn btn-outline-danger ms-2"><a href="/logout">Log out</a></button>
+          <% } %>
+        </form>
+    </div>
+  </nav>
+  <div class="container-md mt-3">
+    <div class="card text-center">
+      <div class="card-header">
+        <ul class="nav nav-pills card-header-pills">
+          <li class="nav-item">
+            <a class="nav-link active" href="#" id="nav_1">Informacion personal</a>
+          </li>
+          <li class="nav-item">
             <% if(userData){ %>
-                <a class="navbar-brand ms-4"> <%= userData[0][0].username %> </a>
-            <% } %>
-          <form class="d-flex flex-row align-content-center justify-content-center" role="search">
-            <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
-            <!-- <button class="btn btn-outline-danger" type="submit"><a href="/signup">Registro</a></button> -->
-            <button class="btn btn-outline-success ms-2"><a href="/">Inicio</a></button>
-            <% if(userData){ %>
-              <button class="btn btn-outline-danger ms-2"><a href="/logout">Log out</a></button>
-            <% } %>
-                
-          </form>
-        </div>
-      </nav>
-    <script src="./bootstrap.bundle.js"></script>
+              <a class="nav-link" href="/<%=userData[0][0].n_control%>/posts" id="nav_2">Productos</a>
+            <% }else{ %>
+              <a class="nav-link" href="/00000000/posts" id="nav_2">Productos</a>
+            <%} %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="nav_3">Comentarios</a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body" id="profileCardBody">
+        <!-- <img src="/img2.jpg" class="img-thumbnail card-body--config" alt="Imagen de prueba">
+        <% if(userData){ %>
+          <p class="card-text">
+        <%= userData[0][0].username %>
+          </p>
+        <% }else{ %>
+          <p>No hay un perfil cargado</p>
+        <% } %>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a> -->
+      </div>
+    </div>
+  </div>
+  <script src="bootstrap.bundle.js"></script>
+  <script src="profile.scripts.js"></script>
 </body>
+
 </html>

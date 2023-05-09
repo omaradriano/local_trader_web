@@ -72,3 +72,4 @@ export const deletePost = async (req, res) => {
         console.log(error);
     }
 }
+

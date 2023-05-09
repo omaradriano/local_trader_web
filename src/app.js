@@ -1,6 +1,10 @@
 import express from 'express'
 import session from 'express-session'
 import flash from 'connect-flash'
+import path from 'path'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //Routes
 import feedRoutes from './routes/feed.routes.js'
@@ -24,8 +28,12 @@ app.use(session({
 app.use(flash())
 
 //Archivos estáticos
-app.use(express.static('public'))
-app.use(express.static('bootstrap'))
+// app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'bootstrap')))
+app.use(express.static(path.join(__dirname, 'scripts')))
+app.use(express.static(path.join(__dirname, 'testImages')))
+app.use(express.static(path.join(__dirname, 'styles')))
+app.use(express.static(path.join(__dirname,`${/[0-9]{8}/g}/bootstrap`)))
 
 //Motor de plantillas
 app.set('views', 'src/public')

@@ -17,4 +17,8 @@ router.post('/', addPost)
 
 router.get('/delete/:id_venta', deletePost)
 
+router.get('/test', (req, res) => {
+    res.render('test')
+})
+
 export default router
