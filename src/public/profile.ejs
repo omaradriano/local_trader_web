@@ -36,37 +36,77 @@
   <div class="container-md mt-3">
     <div class="card text-center">
       <div class="card-header">
-        <ul class="nav nav-pills card-header-pills">
-          <li class="nav-item">
-            <a class="nav-link active" href="#" id="nav_1">Informacion personal</a>
-          </li>
-          <li class="nav-item">
-            <% if(userData){ %>
-              <a class="nav-link" href="/<%=userData[0][0].n_control%>/posts" id="nav_2">Productos</a>
-            <% }else{ %>
-              <a class="nav-link" href="/default/posts" id="nav_2">Productos</a>
-            <%} %>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" id="nav_3">Comentarios</a>
-          </li>
-        </ul>
-      </div>
-      <div class="card-body" id="profileCardBody">
-        <% if(activePage === 'nav_1'){ %>
-          <img src="/img2.jpg" class="img-thumbnail card-body--config" alt="Imagen de prueba">
-          <% if(userData){ %>
-          <p class="card-text">
-          <%= userData[0][0].username %>
-          </p>
-          <% }else{ %>
-          <p>No hay un perfil cargado</p>
-          <% } %>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        <% }else if(activePage === 'nav_2'){ %>
-          <p>Posts</p>
+        <% if(userData){ %>
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="/<%=userData[0][0].n_control%>" id="nav_1">Informacion personal</a>
+            </li>
+            <li class="nav-item">
+              <% if(userData){ %>
+                <a class="nav-link" href="/<%=userData[0][0].n_control%>/posts" id="nav_2">Productos</a>
+              <% }else{ %>
+                <a class="nav-link" href="/default/posts" id="nav_2">Productos</a>
+              <%} %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/<%=userData[0][0].n_control%>/comments" id="nav_3">Comentarios</a>
+            </li>
+          </ul>
+          </div>
+          <!-- La siguiente vista es provisional solo para no tener que loggearse cada momento -->
+        <% }else { %>
+          <ul class="nav nav-pills card-header-pills">
+            <li class="nav-item">
+              <a class="nav-link" href="/00000000" id="nav_1">Informacion personal</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/00000000/posts" id="nav_2">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/00000000/comments" id="nav_3">Comentarios</a>
+            </li>
+          </ul>
+          </div>
+        <% }%>
+      <div class="card-body d-flex flex-column align-content-center" id="profileCardBody">
+        <!-- Aquí se carga la pantalla para la información del usuario -->
+      <% if(activePage === 'nav_1'){ %> 
+            <img src="/img2.jpg" class="img-thumbnail card-body--config align-self-center" alt="Imagen de prueba">
+      <% if(userData){ %>
+            <p class="card-text">
+            <%= userData[0][0].username %>
+            </p>
+      <% }else{ %>
+            <p>No hay un perfil cargado</p>
+      <% } %>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+      <!-- Aqui se cargan los posts del usuario en el propio perfil -->
+      <% }else if(activePage === 'nav_2'){ %>
+      <% if(postsData){ %>
+        <% postsData.forEach( elem=> { %>
+          <div class="card align-self-center my-2" style="width: 90%; max-width: 30rem;">
+            <!-- <img src="..." class="card-img-top" alt="..."> -->
+            <div class="card-body position-relative">
+              <h5 class="card-title"><%= elem.titulo %></h5>
+              <p class="card-text"> <%= elem.descripcion  %></p>
+              <p class="card-text">$ <%= elem.precio %></p>
+              <% if(userData){ %>
+                <% if(userData.n_control === elem.n_control_cliente){ %>
+                  <a  href="/delete/<%= elem.id_venta %>" class="btn btn-danger position-absolute btn_delete_post--pos">Eliminar</a>
+                <% } %>
+              <% } %>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+      <!-- Aqui se carga la sección de comentarios del propio perfil -->
+      <% }else if(activePage === 'nav_3'){ %>
+        <% if(postsData){ %>
+            <%= userData[0][0].username %>
+            <p>Comments</p>
         <% } %>
+      <% } %>
       </div>
     </div>
   </div>

@@ -40,7 +40,7 @@ export const addPost = async (req, res) => {
 export const deletePost = async (req, res) => {
     const { id_venta } = req.params
     try {
-        const data = await pool.query('delete from local_trader.post where id_venta = (?)', [id_venta])
+        await pool.query('delete from local_trader.post where id_venta = (?)', [id_venta])
         console.log('Articulo eliminado');
         res.redirect('/')
     } catch (error) {

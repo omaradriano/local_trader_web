@@ -33,7 +33,10 @@ app.use(express.static(path.join(__dirname, 'bootstrap')))
 app.use(express.static(path.join(__dirname, 'scripts')))
 app.use(express.static(path.join(__dirname, 'testImages')))
 app.use(express.static(path.join(__dirname, 'styles')))
-// app.use(`/${/[0-9]{8}/g}/posts`,express.static(path.join(__dirname,`bootstrap`)))
+app.use('/[0-9]{8}/',express.static(path.join(__dirname,`bootstrap`)))
+app.use('/[0-9]{8}/',express.static(path.join(__dirname,`scripts`)))
+app.use('/[0-9]{8}/',express.static(path.join(__dirname,`testImages`)))
+app.use('/[0-9]{8}/',express.static(path.join(__dirname,`styles`)))
 
 //Motor de plantillas
 app.set('views', 'src/public')
