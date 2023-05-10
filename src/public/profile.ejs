@@ -53,16 +53,20 @@
         </ul>
       </div>
       <div class="card-body" id="profileCardBody">
-        <img src="/img2.jpg" class="img-thumbnail card-body--config" alt="Imagen de prueba">
-        <% if(userData){ %>
+        <% if(activePage === 'nav_1'){ %>
+          <img src="/img2.jpg" class="img-thumbnail card-body--config" alt="Imagen de prueba">
+          <% if(userData){ %>
           <p class="card-text">
-        <%= userData[0][0].username %>
+          <%= userData[0][0].username %>
           </p>
-        <% }else{ %>
+          <% }else{ %>
           <p>No hay un perfil cargado</p>
-        <% } %>
+          <% } %>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           <a href="#" class="btn btn-primary">Go somewhere</a>
+        <% }else if(activePage === 'nav_2'){ %>
+          <p>Posts</p>
+        <% } %>
       </div>
     </div>
   </div>
