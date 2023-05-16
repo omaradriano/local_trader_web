@@ -43,20 +43,23 @@
     <% data.reverse().forEach( elem=> { %>
       <div class="card align-self-center my-2" style="width: 90%; max-width: 30rem;">
         <!-- <img src="..." class="card-img-top" alt="..."> -->
-        <div class="card-body position-relative">
+        <div class="card-body position-relative d-flex flex-column card-body--config">
           <h5 class="card-title"><%= elem.titulo %></h5>
           <p class="card-text"> <%= elem.descripcion  %></p>
-          <p class="card-text">$ <%= elem.precio %></p>
+          <p class="card-text align-self-end m-0">$ <%= elem.precio %></p>
           <% if(userData){ %>
             <% if(userData.n_control === elem.n_control_cliente){ %>
               <a  href="/delete/<%= elem.id_venta %>" class="btn btn-danger position-absolute btn_delete_post--pos">Eliminar</a>
             <% } %>
           <% } %>
+          <a  href="/<%= elem.n_control_cliente %>/<%= elem.id_venta %>"><button id="showPostDetails" class="btn btn-primary align-self-end position-absolute btn_details--pos">
+            Detalles
+          </button></a>
         </div>
       </div>
     <% }) %>
   </div>
-  <!-- Modal -->
+  <!-- Modal para agregar publicación -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content position-relative">
@@ -70,11 +73,6 @@
               <input type="text" class="form-control" name="titulo" id="titulo" placeholder="#" required>
               <label for="titulo" class="form-label">Titulo del producto</label>
             </div>
-            <!-- <div class="mb-3 form-floating">
-              <input type="text" class="form-control" name="n_control_cliente" id="n_control_cliente" placeholder="#"
-                required>
-              <label for="n_control" class="form-label">Número de control</label>
-            </div> -->
             <div class="mb-3 form-floating">
               <input type="text" class="form-control" id="descripcion" name="descripcion" rows="3" placeholder="#">
               <label for="descripcion" class="form-label">Descripción</label>
@@ -86,7 +84,6 @@
             <div class="input-group mb-3">
               <span class="input-group-text">$</span>
               <input type="text" class="form-control" name="precio" aria-label="Amount (to the nearest dollar)">
-              <!-- <span class="input-group-text">.00</span> -->
             </div>
         </div>
         <button type="submit" class="btn btn-primary position-absolute submit_btn--pos">Agregar</button>
@@ -97,6 +94,27 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal para mostrar detalles de las publicaciones -->
+  <!-- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <script src="feed.scripts.js"></script>
   <script src="bootstrap.bundle.js"></script>
 </body>
 

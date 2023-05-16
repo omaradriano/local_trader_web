@@ -27,7 +27,7 @@
           <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
           <!-- <button class="btn btn-outline-danger" type="submit"><a href="/signup">Registro</a></button> -->
           <button class="btn btn-outline-success ms-2"><a href="/">Inicio</a></button>
-          <% if(userData){ %>
+          <% if(userData && state){ %>
             <button class="btn btn-outline-danger ms-2"><a href="/logout">Log out</a></button>
           <% } %>
         </form>
@@ -49,11 +49,11 @@
               <%} %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/<%=userData[0][0].n_control%>/comments" id="nav_3">Comentarios</a>
+              <a class="nav-link disabled" href="/<%=userData[0][0].n_control%>/comments" id="nav_3">Comentarios</a>
             </li>
           </ul>
           </div>
-          <!-- La siguiente vista es provisional solo para no tener que loggearse cada momento -->
+          <!-- La siguiente vista es provisional solo para no tener que loggearse cada momento | Ya no deberia de poder cargar-->
         <% }else { %>
           <ul class="nav nav-pills card-header-pills">
             <li class="nav-item">
@@ -88,7 +88,7 @@
           <div class="card align-self-center my-2" style="width: 90%; max-width: 30rem;">
             <!-- <img src="..." class="card-img-top" alt="..."> -->
             <div class="card-body position-relative">
-              <h5 class="card-title"><%= elem.titulo %></h5>
+              <h5 class="card-title"><a href="/<%=elem.n_control_cliente%>/<%=elem.id_venta%>"><%= elem.titulo %></a></h5>
               <p class="card-text"> <%= elem.descripcion  %></p>
               <p class="card-text">$ <%= elem.precio %></p>
               <% if(userData){ %>
@@ -111,7 +111,7 @@
     </div>
   </div>
   <script src="bootstrap.bundle.js"></script>
-  <script src="profile.scripts.js"></script>
+  <!-- <script src="profile.scripts.js"></script> -->
 </body>
 
 </html>

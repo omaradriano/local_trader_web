@@ -11,6 +11,7 @@ import feedRoutes from './routes/feed.routes.js'
 import signupRoutes from './routes/signup.routes.js'
 import loginRoutes from './routes/login.routes.js'
 import profileRoutes from './routes/profile.routes.js'
+import postRoutes from './routes/post.routes.js'
 //Instancia App
 const app = express()
 
@@ -50,5 +51,7 @@ app.use(signupRoutes)
 app.use(loginRoutes)
 //Profile
 app.use(profileRoutes)
+//Posts
+app.use(postRoutes)
 
 export default app

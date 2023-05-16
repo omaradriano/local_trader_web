@@ -7,13 +7,15 @@ import { v4 as uuid_v4 } from 'uuid'
 //Función para cargar el feed en caso de que haya una sesión iniciada
 export const loadFeed = async (req, res) => {
     try {
-        if (!req.session.userData) {
+        const [data] = await pool.query('select * from local_trader.post')
+        if (!req.session.userData) { //En caso de que no existan datos de login, renderizar todo sin permiso de eliminar publicaciones
+            // console.log(data);
+            req.session.postsData = data
             const userData = undefined
-            const [data] = await pool.query('select * from local_trader.post')
             res.render('feed', { data, userData })
-        }else{
-            const [data] = await pool.query('select * from local_trader.post')
+        }else{ //En caso de que si exista una sesion, enviar los datos de sesión y renderizar con permisos de borrado.
             const userData = req.session.userData
+            // console.log(userData);
             res.render('feed', { data, userData })
         }
     } catch (error) {
